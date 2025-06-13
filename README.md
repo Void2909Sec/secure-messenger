@@ -1,7 +1,6 @@
 import os
 import webbrowser
 import datetime
-from playsound import playsound
 
 def greet():
     hour = datetime.datetime.now().hour
@@ -23,19 +22,23 @@ def open_browser():
 
 def play_music():
     try:
-        # Заменить путь на нужный (например, "C:\\Users\\Name\\Music\\song.mp3")
-        file_path = "C:\\Users\\Public\\Music\\sample.mp3"
-        print(f"🎵 Воспроизвожу: {file_path}")
-        playsound(file_path)
+        file_path = "C:\\Users\\Public\\Music\\sample.mp3"  # укажи свой путь
+        if os.path.exists(file_path):
+            print(f"🎵 Воспроизвожу: {file_path}")
+            os.startfile(file_path)
+        else:
+            print(f"❌ Файл не найден: {file_path}")
     except Exception as e:
         print(f"[Ошибка] Не удалось воспроизвести музыку: {e}")
 
 def play_video():
     try:
-        # Заменить путь на нужный
-        file_path = "C:\\Users\\Public\\Videos\\sample.mp4"
-        print(f"🎬 Воспроизвожу: {file_path}")
-        os.startfile(file_path)
+        file_path = "C:\\Users\\Public\\Videos\\sample.mp4"  # укажи свой путь
+        if os.path.exists(file_path):
+            print(f"🎬 Воспроизвожу: {file_path}")
+            os.startfile(file_path)
+        else:
+            print(f"❌ Файл не найден: {file_path}")
     except Exception as e:
         print(f"[Ошибка] Не удалось воспроизвести видео: {e}")
 
